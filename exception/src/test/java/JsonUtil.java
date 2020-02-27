@@ -1,5 +1,5 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class JsonUtil {
 
@@ -7,9 +7,18 @@ public class JsonUtil {
   }
   private static final ObjectMapper objectMapper = new ObjectMapper();
 
-  public static String convertToJson(Object object) {
-    //TODO: change the code to pass the test
+  public static String convertToJson(Object object)  {
+    String json= null;
+    try {
+      json = objectMapper.writeValueAsString(object);
+    } catch (ValueReadException e) {
+      e.getMessage();
+    } catch (JsonProcessingException e) {
+      e.printStackTrace();
+    }
+    return json;
 
-    throw new NotImplementedException();
+
   }
+
 }
